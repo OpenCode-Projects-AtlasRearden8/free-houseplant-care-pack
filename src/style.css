@@ -1,0 +1,214 @@
+/* Shared print stylesheet for the houseplant care printables.
+   Targets WeasyPrint (print engine) and US Letter paper. */
+
+:root { --ink: #26332a; }
+
+@page {
+  size: letter;
+  margin: 15mm 14mm 13mm;
+  @bottom-right {
+    content: counter(page) " / " counter(pages);
+    font-family: "Noto Sans", "DejaVu Sans", sans-serif;
+    font-size: 8pt;
+    color: #9aa69e;
+  }
+  @bottom-left {
+    content: "houseplant helper printables";
+    font-family: "Noto Sans", "DejaVu Sans", sans-serif;
+    font-size: 8pt;
+    color: #b8c1bb;
+  }
+}
+
+@page cover {
+  margin: 0;
+  background: #f7f1e4;
+  @bottom-right { content: none; }
+  @bottom-left { content: none; }
+}
+
+@page landscape {
+  size: letter landscape;
+  margin: 12mm 12mm 11mm;
+}
+
+/* ---------- foundations ---------- */
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Noto Sans", "DejaVu Sans", sans-serif;
+  font-size: 9.5pt;
+  line-height: 1.45;
+  color: #26332a;
+}
+
+h1, h2, h3 { font-family: "Noto Serif", "DejaVu Serif", serif; margin: 0; }
+
+a { color: inherit; text-decoration: none; }
+
+/* ---------- getting-started cover page ---------- */
+
+.sheet-cover {
+  page: cover;
+  page-break-after: always;
+  height: 279.4mm;
+  padding: 0 0 6mm;
+}
+
+.cover-head {
+  background: #2f5d3a;
+  color: #f7f1e4;
+  padding: 22mm 18mm 12mm;
+}
+
+.cover-kicker {
+  font-size: 8.5pt;
+  letter-spacing: 2pt;
+  text-transform: uppercase;
+  color: #cfe0d2;
+  margin: 0 0 5mm;
+}
+
+h1.cover-title {
+  font-size: 30pt;
+  line-height: 1.15;
+  margin: 0 0 4mm;
+}
+
+.cover-sub {
+  font-size: 12pt;
+  font-style: italic;
+  color: #dcc9a8;
+  margin: 0;
+}
+
+.cover-body { padding: 10mm 18mm 0; }
+
+.cover-body h3 {
+  color: #2f5d3a;
+  font-size: 10.5pt;
+  letter-spacing: 0.5pt;
+  text-transform: uppercase;
+  margin: 0 0 2mm;
+}
+
+.cover-intro { font-size: 10.5pt; line-height: 1.6; margin: 0 0 6mm; }
+
+.cover-list { margin: 0 0 5mm; padding-left: 5.5mm; }
+
+.cover-list li { margin: 0 0 1.6mm; font-size: 9.5pt; }
+
+.cover-tip {
+  background: #fdfaf2;
+  border: 1pt solid #e3d9c4;
+  border-left: 3pt solid #c56a45;
+  border-radius: 2pt;
+  padding: 4mm 5mm;
+  font-size: 9.5pt;
+}
+
+.cover-tip strong { color: #9c4f2e; }
+
+.cover-footer {
+  margin: 7mm 18mm 0;
+  font-size: 8.5pt;
+  color: #8b958d;
+}
+
+/* ---------- printable sheet ---------- */
+
+.sheet {
+  page-break-before: always;
+}
+
+.sheet-head { border-bottom: 1.5pt solid #2f5d3a; padding-bottom: 2.5mm; margin-bottom: 4mm; }
+
+.sheet-head h2 { font-size: 17pt; color: #2f5d3a; }
+
+.sheet-head .lede { font-size: 9.5pt; color: #6b756e; margin: 1.5mm 0 0; }
+
+.sheet h3 {
+  font-size: 10.5pt;
+  color: #2f5d3a;
+  text-transform: uppercase;
+  letter-spacing: 0.8pt;
+  margin: 4mm 0 2mm;
+}
+
+.boxes { display: flex; gap: 4mm; }
+
+.box {
+  border: 1pt solid #d6cfc0;
+  border-radius: 3pt;
+  background: #fdfbf6;
+  padding: 3mm 3.5mm;
+}
+
+.box.wide { flex: 1; }
+.box.narrow { flex: 0.62; }
+
+.box h3 { margin: 0 0 1.5mm; font-size: 9pt; color: #2f5d3a; }
+
+.box p, .box ul { margin: 0 0 1.5mm; font-size: 8.75pt; }
+.box ul { padding-left: 4.5mm; }
+.box li { margin: 0 0 1mm; }
+
+/* ---------- tables ---------- */
+
+table.log {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 8.75pt;
+}
+
+table.log th {
+  background: #2f5d3a;
+  color: #f7f1e4;
+  font-size: 8pt;
+  font-weight: normal;
+  text-align: left;
+  padding: 1.8mm 2.2mm;
+}
+
+table.log td {
+  border: 0.75pt solid #c9d4cc;
+  padding: 0;
+  height: 8mm;
+  vertical-align: top;
+}
+
+table.log td + td, table.log th + th { border-left: 0.75pt solid #d7e0d9; }
+
+table.log .rule { border-bottom: 0.75pt dotted #d7e0d9; }
+
+/* ---------- checkboxes and dots ---------- */
+
+.check {
+  display: inline-block;
+  width: 3.4mm;
+  height: 3.4mm;
+  border: 0.75pt solid #55665b;
+  border-radius: 0.8pt;
+  margin-right: 2mm;
+  vertical-align: -0.8mm;
+}
+
+.dot {
+  display: inline-block;
+  width: 2.8mm;
+  height: 2.8mm;
+  border: 0.75pt solid #55665b;
+  border-radius: 50%;
+  margin-right: 1.5mm;
+  vertical-align: -0.4mm;
+}
+
+.line { border-bottom: 0.75pt solid #9aa69e; display: inline-block; }
+
+/* ---------- misc ---------- */
+
+.small { font-size: 8.5pt; color: #6b756e; }
+
+.hint { color: #9aa69e; font-size: 8.5pt; font-style: italic; }
